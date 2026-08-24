@@ -1,17 +1,24 @@
-# bookchaowalit_portfolio_mobile
+# Chaowalit Greepoke Portfolio Mobile
 
-A new Flutter project.
+Cross-platform Flutter portfolio app for browsing projects, skills, and
+contact information. A public Flutter web preview is available at
+<https://portfolio-mobile.bookchaowalit.com>.
 
-## Getting Started
+## Verify locally
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter analyze
+flutter test
+flutter build web --release
+```
 
-A few resources to get you started if this is your first Flutter project:
+The public preview is a web release of the same Flutter codebase. Native iOS
+and Android store publication still requires device smoke tests, signing, and
+store review; this repository does not claim that those releases are live.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Project references
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter documentation](https://docs.flutter.dev/)
+- [Product boundary](PRODUCT.md)
+- [Design direction](DESIGN.md)
