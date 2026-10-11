@@ -3,8 +3,9 @@
 
 from PIL import Image, ImageDraw, ImageFont
 import os
+from pathlib import Path
 
-OUTPUT_DIR = "/home/bookchaowalit/book-everything/solo-empire/domains/product/engineering/book-dev/book-apps/portfolio/bookchaowalit-portfolio-mobile/play-store-assets"
+OUTPUT_DIR = str(Path(__file__).resolve().parents[1] / "play-store-assets")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # Colors - B&W monochrome design system
