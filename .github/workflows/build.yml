@@ -28,6 +28,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Guard - no signing material tracked
+        run: sh scripts/check-signing-files.sh
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:

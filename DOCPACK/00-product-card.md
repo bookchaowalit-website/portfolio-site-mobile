@@ -42,7 +42,7 @@ owner: Product owner (Book Dev)
 ## 6. ช่องว่างสำคัญ
 
 - ข้อมูลผลงานเป็น static แยกจาก `src/data/app-projects.ts` ของเว็บหลัก จึงล้าสมัยได้
-- มีไฟล์ signing (`*.mobileprovision`, `*.cer`) ถูก track ใน git ควรทบทวนว่าควรอยู่ใน repo หรือไม่ (ไม่ได้เปิดดูเนื้อหา) **[ต้องยืนยัน]**
+- ไฟล์ signing (`*.mobileprovision`, `*.cer`) ถูกเอาออกจาก tree แล้วเมื่อ 2026-10-21 และ `scripts/check-signing-files.sh` กันไม่ให้กลับมา แต่ยังอยู่ใน git history (`.cer` เป็น public cert ไม่มี private key, profile หมดอายุ 2026-09-28) การ revoke/ล้าง history/ทำ private เป็นการตัดสินใจของเจ้าของ (D1)
 - native release ยังไม่ผ่าน device smoke, signing และ store review
 
 ## 7. คำตัดสิน

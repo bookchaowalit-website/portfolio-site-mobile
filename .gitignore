@@ -48,3 +48,13 @@ app.*.map.json
 # Signing keys & secrets
 android/key.properties
 android/app/upload-keystore.jks
+
+# Signing material: keep in the keychain / secret store, never in this public repo.
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.p12
+*.p8
+*.jks
+*.keystore
+**/android/key.properties
