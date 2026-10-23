@@ -3,9 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app_links/app_links.dart';
 import 'screens/splash_screen.dart';
+import 'observability/sentry_setup.dart';
 import 'services/favorites_service.dart';
 
-void main() async {
+Future<void> main() => runWithSentry(_start);
+
+Future<void> _start() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Load saved preferences
