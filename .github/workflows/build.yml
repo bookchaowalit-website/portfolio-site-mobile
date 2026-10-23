@@ -40,6 +40,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.44.9'
           channel: stable
           cache: true
 
@@ -75,13 +76,29 @@ jobs:
           echo "storeFile=upload-keystore.jks" >> android/key.properties
 
       - name: Build Android App Bundle
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
         run: |
           if [ -f android/app/upload-keystore.jks ]; then
-            flutter build appbundle --release
+            flutter build appbundle --release --dart-define=SENTRY_DSN="$SENTRY_DSN"
           else
             echo "No real keystore available (Infisical secret is unset or still a REPLACE_ME placeholder) — building debug instead"
             flutter build appbundle --debug
           fi
+
+      - name: AAB checksum (job summary)
+        run: |
+          {
+            echo "### Android App Bundle"
+            echo ""
+            echo "| File | SHA-256 |"
+            echo "|---|---|"
+            for f in build/app/outputs/bundle/release/*.aab; do
+              if [ -f "$f" ]; then echo "| \`$(basename "$f")\` | \`$(sha256sum "$f" | cut -d' ' -f1)\` |"; fi
+            done
+            echo ""
+            echo "Commit \`$GITHUB_SHA\`. Store upload happens only on a v* tag."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Android artifact
         uses: actions/upload-artifact@v4
@@ -130,6 +147,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
+          flutter-version: '3.44.9'
           channel: stable
           cache: true
 
@@ -176,12 +194,14 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
       - name: Build iOS IPA (unsigned if no certs)
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
         run: |
           if [ -f "$RUNNER_TEMP/build_certificate.p12" ]; then
-            flutter build ipa --release --export-options-plist=ios/ExportOptions.plist
+            flutter build ipa --release --export-options-plist=ios/ExportOptions.plist --dart-define=SENTRY_DSN="$SENTRY_DSN"
           else
             echo "No real certificate available (Infisical secret is unset or still a REPLACE_ME placeholder) — building unsigned"
-            flutter build ios --release --no-codesign
+            flutter build ios --release --no-codesign --dart-define=SENTRY_DSN="$SENTRY_DSN"
           fi
 
       - name: Upload iOS artifact
