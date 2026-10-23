@@ -22,3 +22,4 @@ store review; this repository does not claim that those releases are live.
 - [Flutter documentation](https://docs.flutter.dev/)
 - [Product boundary](PRODUCT.md)
 - [Design direction](DESIGN.md)
+- [Security notes](SECURITY.md) (old iOS signing files in history: decision D1)
