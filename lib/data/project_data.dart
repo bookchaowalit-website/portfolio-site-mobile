@@ -54,7 +54,7 @@ class ProjectData {
           'pull-to-refresh, scroll animations, dark mode, share functionality, and deep linking. '
           'Designed to pass both Apple App Store and Google Play Store review guidelines.',
       tags: ['Flutter', 'Dart', 'Mobile'],
-      url: 'https://github.com/bookchaowalit/bookchaowalit-portfolio-mobile',
+      url: 'https://github.com/bookchaowalit-website/portfolio-site-mobile',
       icon: Icons.phone_android,
       features: [
         'Material Design 3 with light/dark themes',
