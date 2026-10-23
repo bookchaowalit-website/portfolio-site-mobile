@@ -60,7 +60,11 @@ The signing-file guard (`scripts/check-signing-files.sh`) stays in both workflow
 - `sentry_setup_test.dart` against a signature-only stub: `+1 -4: Some tests failed.`
 - `favorites_service_test.dart` passed on first run: it characterises existing behaviour (no production change).
 
-Green: CI run linked in §6 (analyze and test on Flutter 3.44.9).
+Green on `1ede3e9`: CI run [39906340991](https://github.com/bookchaowalit-website/portfolio-site-mobile/actions/runs/39906340991)
+(signing guard, analyze no issues, 14 tests, gitleaks/Semgrep/OSV/Trivy) and Build & Release run
+[39906340665](https://github.com/bookchaowalit-website/portfolio-site-mobile/actions/runs/39906340665) (release AAB 55.2 MB
+signed with the Infisical upload key and uploaded as `android-aab`, SHA-256 in the job summary; unsigned iOS release
+archive; no store upload, no GitHub release — no tag).
 
 ## 4. Interfaces and data
 
